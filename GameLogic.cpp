@@ -24,6 +24,7 @@ int Shuffle[2];
 int Score[2];
 
 char selection = ' ';
+char selection2 = ' ';
 std::string text = "";
 
 //initializes the board

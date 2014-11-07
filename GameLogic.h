@@ -3,6 +3,7 @@
 
 #include "Hashing.h"
 #include <string>
+#include <SFML\Network.hpp>
 
 enum TileType {TILE_NORMAL,TILE_DOUBLEWORD,TILE_TRIPLEWORD,TILE_DOUBLELETTER,TILE_TRIPLELETTER};
 typedef struct {
@@ -27,6 +28,7 @@ extern int Score[2];
 extern int turn; //whos turn is it?
 
 extern char selection; //selected letter
+extern char selection2;
 
 void InitializeBoard();
 int getScore();

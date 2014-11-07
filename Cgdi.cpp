@@ -48,6 +48,9 @@ Cgdi::Cgdi()
   m_OrangeBrush = CreateSolidBrush(colors[orange]);
   m_PurpleBrush = CreateSolidBrush(colors[purple]);
 
+  m_tmpPen = CreatePen(PS_SOLID,1,RGB(0,0,0));
+  m_tmpBrush = CreateSolidBrush(RGB(0,0,0));
+
   m_hdc = NULL;
 }
 
@@ -89,5 +92,8 @@ Cgdi::~Cgdi()
   DeleteObject(m_DarkGreenBrush);
   DeleteObject(m_OrangeBrush);
   DeleteObject(m_PurpleBrush);
+
+  DeleteObject(m_tmpPen);
+  DeleteObject(m_tmpBrush);
 }
 

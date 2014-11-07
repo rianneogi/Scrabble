@@ -33,11 +33,11 @@ const COLORREF colors[NumColors] =
   RGB(255,200,200),
   RGB(200,200,200),
   RGB(255,255,0), //yellow
-  RGB(235,150,0),
+  RGB(253,174,97), //orange
   RGB(255,153,153),
   RGB(133,90,0),
-  RGB(255,255,255),  
-  RGB(0, 190, 0),        //dark green
+  RGB(255,255,255), //white  
+  RGB(26, 150, 65),        //dark green
   RGB(0, 200, 200),       //light blue
   RGB(200, 200, 200),     //light grey
   RGB(255, 230, 230)      //light pink
@@ -119,6 +119,9 @@ private:
   HBRUSH  m_LightBlueBrush;
   HBRUSH  m_DarkGreenBrush;
 
+  HPEN m_tmpPen;
+  HBRUSH m_tmpBrush;
+
   HDC    m_hdc;
 
   //constructor is private
@@ -170,6 +173,60 @@ public:
   void DarkGreenBrush() {if(m_hdc)SelectObject(m_hdc, m_DarkGreenBrush);}
   void OrangeBrush() {if(m_hdc)SelectObject(m_hdc, m_OrangeBrush);}
   void PurpleBrush() {if(m_hdc)SelectObject(m_hdc, m_PurpleBrush);}
+
+  void SetPen(int r,int g,int b,int style,bool thick)
+  {
+	  if(m_hdc)
+		  if(thick)
+		  {
+			  DeleteObject(m_tmpPen);
+			  m_tmpPen = CreatePen(style,2,RGB(r,g,b));
+			  SelectObject(m_hdc,m_tmpPen);
+		  }
+		  else 
+		  {
+			  DeleteObject(m_tmpPen);
+			  m_tmpPen = CreatePen(style,1,RGB(r,g,b));
+			  SelectObject(m_hdc,m_tmpPen);
+		  }
+  }
+
+  void SetBrush(int r,int g,int b)
+  {
+	  if(m_hdc)
+	  {
+		  DeleteObject(m_tmpBrush);
+		  m_tmpBrush = CreateSolidBrush(RGB(r,g,b));
+		  SelectObject(m_hdc,m_tmpBrush);
+	  }
+  }
+
+  void SetPen(COLORREF rgb,int style,bool thick)
+  {
+	  if(m_hdc)
+		  if(thick)
+	      {
+			  DeleteObject(m_tmpPen);
+			  m_tmpPen = CreatePen(style,2,rgb);
+			  SelectObject(m_hdc,m_tmpPen);
+		  }
+		  else 
+	      {
+			  DeleteObject(m_tmpPen);
+			  m_tmpPen = CreatePen(style,1,rgb);
+			  SelectObject(m_hdc,m_tmpPen);
+		  }
+  }
+
+  void SetBrush(COLORREF rgb)
+  {
+	  if(m_hdc)
+	  {
+		  DeleteObject(m_tmpBrush);
+		  m_tmpBrush = CreateSolidBrush(rgb);
+		  SelectObject(m_hdc,m_tmpBrush);
+	  }
+  }
 
 
 

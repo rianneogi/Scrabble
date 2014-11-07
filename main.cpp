@@ -287,6 +287,8 @@ int WINAPI WinMain (HINSTANCE hInstance,
 
   MSG msg;
 
+  sf::Packet packet;
+
   while(!bDone) //main game loop
   {		
     while( PeekMessage( &msg, NULL, 0, 0, PM_REMOVE ) ) 
@@ -314,6 +316,9 @@ int WINAPI WinMain (HINSTANCE hInstance,
 
       Sleep(2);
     }
+
+	Socket.receive(packet);
+	receivePacket(packet);
    					
   }//end while
 

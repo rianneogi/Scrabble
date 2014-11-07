@@ -56,8 +56,9 @@ const int MenuItemWidth = (LetterSize*8) - 100;
 
 const int NewGameYOffset = 150;
 const int ContinueGameYOffset = 200;
-const int LoadGameYOffset = 250;
-const int ExitYOffset = 300;
+const int MultiplayerYOffset = 250;
+const int LoadGameYOffset = 300;
+const int ExitYOffset = 350;
 
 
 #endif
